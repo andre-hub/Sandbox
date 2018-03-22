@@ -2,9 +2,9 @@
 <CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
     <CodeSnippet Format="1.0.0">
         <Header>
-            <Title>create table</Title>
-            <Shortcut>create table</Shortcut>
-            <Description>create table</Description>
+            <Title>alter table add column</Title>
+            <Shortcut>AlterTableAddColumn</Shortcut>
+            <Description>alter table add column</Description>
             <Author>ag</Author>
             <SnippetTypes>
                 <SnippetType>Expansion</SnippetType>
@@ -17,21 +17,19 @@
                     <ToolTip>Table name</ToolTip>
                     <Default>NewTablename</Default>
                 </Literal>
+                <Literal>
+                    <ID>Column</ID>
+                    <ToolTip>Column name</ToolTip>
+                    <Default>column</Default>
+                </Literal>
+                <Literal>
+                    <ID>ColumnType</ID>
+                    <ToolTip>ColumnType</ToolTip>
+                    <Default>varchar(255)</Default>
+                </Literal>
             </Declarations>
             <Code Language="SQL">
-                <![CDATA[IF (EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND  TABLE_NAME = '$TableName$'))
-BEGIN
-    DROP TABLE dbo.$TableName$
-END
-CREATE TABLE dbo.$TableName$
-(
-    ID$end$ int NOT NULL,
-    CONSTRAINT [PK_$TableName$] PRIMARY KEY CLUSTERED 
-    (
-        [ID] ASC
-    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY];
-                ]]>
+                <![CDATA[ALTER TABLE dbo.$TableName$ ADD $Column$ $ColumnType$ NOT NULL DEFAULT($end$)]]>
             </Code>
         </Snippet>
     </CodeSnippet>
