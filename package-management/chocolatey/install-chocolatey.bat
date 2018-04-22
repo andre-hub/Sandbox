@@ -6,10 +6,16 @@ SET localCachePath=d:\Installer\chocolatey
 ::REM choco source add -n=MyServer -s"http://servername:8000/api/odata"
 
 :: default applications
-choco install -y --cache-location=%localCachePath% chocolateygui 7zip Firefox Thunderbird f.lux keepass libreoffice vlc
+choco install -y --cache-location=%localCachePath% chocolateygui 7zip aria2 Firefox Thunderbird f.lux keepass libreoffice vlc adobereader teamviewer
 
 :: extended applications
-choco install -y --cache-location=%localCachePath% meld pandoc visualstudiocode gajim ditto skype mumble gimp virtualbox
+choco install -y --cache-location=%localCachePath% meld pandoc visualstudiocode gajim ditto skype mumble teamspeak gimp virtualbox jre8 
+
+:: Games
+choco install -y battle.net steam uplay
+
+:: WLAN Controler
+#choco install -y ubiquiti-unifi-controller
 
 @echo ==================================================================
 @echo .
