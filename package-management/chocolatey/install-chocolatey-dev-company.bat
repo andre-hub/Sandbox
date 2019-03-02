@@ -6,7 +6,7 @@ SET localCachePath=d:\Installer\chocolatey
 ::REM choco source add -n=MyServer -s"http://servername:8000/api/odata"
 
 :: default applications
-choco install -y --cache-location=%localCachePath% chocolateygui 7zip aria2 Firefox f.lux keepass keepass-langfiles teamviewer bleachbit windirstat vscode ditto virtualbox sysinternals mRemoteNG
+choco install -y --cache-location=%localCachePath% chocolateygui 7zip aria2 Firefox f.lux keepassxc teamviewer bleachbit windirstat vscode ditto virtualbox sysinternals mRemoteNG
 
 :: communication
 choco install -y --cache-location=%localCachePath% gajim skype mumble 
