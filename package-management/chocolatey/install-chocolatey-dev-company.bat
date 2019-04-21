@@ -6,19 +6,22 @@ SET localCachePath=d:\Installer\chocolatey
 ::REM choco source add -n=MyServer -s"http://servername:8000/api/odata"
 
 :: default applications
-choco install -y --cache-location=%localCachePath% chocolateygui 7zip aria2 Firefox f.lux keepassxc teamviewer bleachbit windirstat vscode ditto virtualbox sysinternals mRemoteNG
+choco install -y --cache-location=%localCachePath% chocolatey-autoupdater chocolateygui 7zip aria2 Firefox keepassxc teamviewer bleachbit windirstat vscode ditto virtualbox sysinternals mRemoteNG
 
 :: communication
 choco install -y --cache-location=%localCachePath% gajim skype mumble 
 
 :: office applications
-choco install -y --cache-location=%localCachePath% gimp nextcloud-client libreoffice vlc adobereader capture2text
+choco install -y --cache-location=%localCachePath% gimp libreoffice capture2text
 
 :: Default IT applications
 choco install -y --cache-location=%localCachePath% SourceCodePro git fzf gitg meld pandoc vscode-csharp vscode-csharpextensions vscode-icons pencil
 
 :: Default development applications
-choco install -y --cache-location=%localCachePath% dotnetcore dotnetcore-sdk DotNet4.7 wixtoolset sql-server-express sql-server-management-studio visualstudio2017enterprise LINQPad5
+choco install -y --cache-location=%localCachePath% dotnetcore dotnetcore-sdk wixtoolset visualstudio2019professional visualstudio2019-workload-netweb isualstudio2019-workload-manageddesktop LINQPad5
+
+:: database applications
+choco install -y --cache-location=%localCachePath% mysql.workbench  sql-server-express sql-server-management-studio
 
 @echo ==================================================================
 @echo .

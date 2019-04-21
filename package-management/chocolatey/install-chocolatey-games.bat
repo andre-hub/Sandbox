@@ -5,8 +5,17 @@ SET localCachePath=d:\Installer\chocolatey
 
 ::REM choco source add -n=MyServer -s"http://servername:8000/api/odata"
 
-:: Games
-choco install -y battle.net origin steam uplay goggalaxy jre8
+:: default applications
+choco install -y --cache-location=%localCachePath% chocolatey-autoupdater chocolateygui 7zip Firefox keepassxc bleachbit windirstat vscode ditto sysinternals
+
+:: communication
+choco install -y --cache-location=%localCachePath% gajim mumble teamspeak nextcloud-client
+
+:: Game Launcher
+choco install -y battle.net origin steam epicgameslauncher uplay goggalaxy
+
+:: for minecraft
+choco install -y jre8
 
 @echo ==================================================================
 @echo .

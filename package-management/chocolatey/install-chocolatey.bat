@@ -6,20 +6,21 @@ SET localCachePath=d:\Installer\chocolatey
 ::REM choco source add -n=MyServer -s"http://servername:8000/api/odata"
 
 :: default applications
-choco install -y --cache-location=%localCachePath% chocolateygui 7zip aria2 Firefox f.lux keepassxc teamviewer bleachbit windirstat vscode ditto virtualbox sysinternals mRemoteNG
+choco install -y --cache-location=%localCachePath% chocolatey-autoupdater chocolateygui 7zip aria2 Firefox keepassxc teamviewer bleachbit windirstat vscode ditto virtualbox sysinternals mRemoteNG
 
 :: communication
-choco install -y --cache-location=%localCachePath% gajim skype mumble teamspeak Thunderbird 
-:: claws-mail adobedigitaleditions
+choco install -y --cache-location=%localCachePath% gajim skype mumble teamspeak 
+:: claws-mail Thunderbird
 
 :: office applications
 choco install -y --cache-location=%localCachePath% gimp nextcloud-client libreoffice vlc adobereader capture2text
+:: adobedigitaleditions
 
 :: Default IT applications
 choco install -y --cache-location=%localCachePath% SourceCodePro git fzf gitg meld pandoc vscode-csharp vscode-csharpextensions vscode-icons pencil
 
 :: Default development applications
-choco install -y --cache-location=%localCachePath% dotnetcore dotnetcore-sdk DotNet4.7 visualstudio2017community wixtoolset
+choco install -y --cache-location=%localCachePath% dotnetcore dotnetcore-sdk wixtoolset visualstudio2019community visualstudio2019-workload-netweb isualstudio2019-workload-manageddesktop
 
 :: WLAN Controler
 :: choco install -y ubiquiti-unifi-controller
