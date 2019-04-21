@@ -8,14 +8,17 @@ SET localCachePath=d:\Installer\chocolatey
 :: default applications
 choco install -y --cache-location=%localCachePath% chocolatey-autoupdater chocolateygui 7zip Firefox keepassxc bleachbit windirstat vscode ditto sysinternals
 
+:: driver
+choco install -y --cache-location=%localCachePath% nvidia-display-driver 
+
 :: communication
 choco install -y --cache-location=%localCachePath% gajim mumble teamspeak nextcloud-client
 
 :: Game Launcher
-choco install -y battle.net origin steam epicgameslauncher uplay goggalaxy
+choco install -y --cache-location=%localCachePath% battle.net origin steam epicgameslauncher uplay goggalaxy
 
 :: for minecraft
-choco install -y jre8
+choco install -y --cache-location=%localCachePath% jre8
 
 @echo ==================================================================
 @echo .
