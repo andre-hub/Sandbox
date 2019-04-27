@@ -12,13 +12,13 @@ choco install -y --cache-location=%localCachePath% chocolatey-autoupdater chocol
 choco install -y --cache-location=%localCachePath% gajim skype mumble 
 
 :: office applications
-choco install -y --cache-location=%localCachePath% gimp libreoffice capture2text
+choco install -y --cache-location=%localCachePath% gimp libreoffice mupdf capture2text
 
 :: Default IT applications
 choco install -y --cache-location=%localCachePath% SourceCodePro git fzf gitg meld pandoc vscode-csharp vscode-csharpextensions vscode-icons pencil
 
 :: Default development applications
-choco install -y --cache-location=%localCachePath% dotnetcore dotnetcore-sdk wixtoolset visualstudio2019professional visualstudio2019-workload-netweb isualstudio2019-workload-manageddesktop LINQPad5
+choco install -y --cache-location=%localCachePath% archi dotnetcore dotnetcore-sdk wixtoolset visualstudio2019professional visualstudio2019-workload-netweb isualstudio2019-workload-manageddesktop LINQPad5
 
 :: database applications
 choco install -y --cache-location=%localCachePath% mysql.workbench  sql-server-express sql-server-management-studio

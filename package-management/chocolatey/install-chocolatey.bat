@@ -13,14 +13,14 @@ choco install -y --cache-location=%localCachePath% gajim skype mumble teamspeak
 :: claws-mail Thunderbird
 
 :: office applications
-choco install -y --cache-location=%localCachePath% gimp nextcloud-client libreoffice vlc adobereader capture2text
-:: adobedigitaleditions
+choco install -y --cache-location=%localCachePath% gimp nextcloud-client libreoffice vlc mupdf capture2text
+:: adobedigitaleditions adobereader
 
 :: Default IT applications
 choco install -y --cache-location=%localCachePath% SourceCodePro git fzf gitg meld pandoc vscode-csharp vscode-csharpextensions vscode-icons pencil
 
 :: Default development applications
-choco install -y --cache-location=%localCachePath% dotnetcore dotnetcore-sdk wixtoolset visualstudio2019community visualstudio2019-workload-netweb isualstudio2019-workload-manageddesktop
+choco install -y --cache-location=%localCachePath% archi dotnetcore dotnetcore-sdk wixtoolset visualstudio2019community visualstudio2019-workload-netweb visualstudio2019-workload-universal visualstudio2019-workload-netcoretools visualstudio2019-workload-manageddesktop
 
 :: WLAN Controler
 :: choco install -y ubiquiti-unifi-controller
