@@ -23,6 +23,8 @@ choco install -y --cache-location=%localCachePath% archi dotnetcore dotnetcore-s
 :: database applications
 choco install -y --cache-location=%localCachePath% mysql.workbench  sql-server-express sql-server-management-studio
 
+@echo https://www.modelio.org/download/send/31-modelio-3-8-1/141-modelio-3-8-1-windows-64-bit.html
+
 @echo ==================================================================
 @echo .
 @echo     change the cache-location in the file 
