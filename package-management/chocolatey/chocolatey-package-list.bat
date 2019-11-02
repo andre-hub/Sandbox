@@ -1,5 +1,5 @@
 @ECHO OFF
-SET FilePath=c:\temp\choco-application-list.txt
+SET FilePath=D:\Installer\choco-application-list.txt
 
 del %FilePath%
 copy NUL %FilePath%
