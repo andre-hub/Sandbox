@@ -1,29 +1,24 @@
 @echo off
-SET localCachePath=d:\Installer\chocolatey
+SET localCachePath="C:\ZA AG\chocolatey"
 
 @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 
 ::REM choco source add -n=MyServer -s"http://servername:8000/api/odata"
 
 :: default applications
-choco install -y --cache-location=%localCachePath% chocolatey-autoupdater chocolateygui 7zip aria2 Firefox keepassxc teamviewer bleachbit windirstat vscode ditto virtualbox sysinternals mRemoteNG
-
-:: communication
-choco install -y --cache-location=%localCachePath% gajim skype mumble 
+choco install -y --cache-location=%localCachePath% chocolatey-autoupdater chocolateygui 7zip microsoft-windows-terminal aria2 Firefox keepassxc teamviewer bleachbit windirstat vscode ditto virtualbox sysinternals mRemoteNG
 
 :: office applications
-choco install -y --cache-location=%localCachePath% gimp libreoffice mupdf capture2text
+choco install -y --cache-location=%localCachePath% libreoffice capture2text
 
 :: Default IT applications
 choco install -y --cache-location=%localCachePath% SourceCodePro git fzf gitg meld pandoc vscode-csharp vscode-csharpextensions vscode-icons pencil
 
 :: Default development applications
-choco install -y --cache-location=%localCachePath% archi dotnetcore dotnetcore-sdk wixtoolset visualstudio2019professional visualstudio2019-workload-netweb isualstudio2019-workload-manageddesktop LINQPad5
+choco install -y --cache-location=%localCachePath% dotnetcore dotnetcore-sdk wixtoolset visualstudio2019professional visualstudio2019-workload-netweb visualstudio2019-workload-manageddesktop LINQPad5
 
 :: database applications
 choco install -y --cache-location=%localCachePath% mysql.workbench  sql-server-express sql-server-management-studio
-
-@echo https://www.modelio.org/download/send/31-modelio-3-8-1/141-modelio-3-8-1-windows-64-bit.html
 
 @echo ==================================================================
 @echo .
