@@ -9,7 +9,7 @@ SET localCachePath="C:\ZA AG\chocolatey"
 choco install -y --cache-location=%localCachePath% chocolatey-autoupdater chocolateygui 7zip microsoft-windows-terminal aria2 Firefox keepassxc teamviewer bleachbit windirstat vscode ditto virtualbox sysinternals mRemoteNG
 
 :: office applications
-choco install -y --cache-location=%localCachePath% libreoffice capture2text
+choco install -y --cache-location=%localCachePath% libreoffice capture2text greenshot choco install microsoft-teams yed
 
 :: Default IT applications
 choco install -y --cache-location=%localCachePath% SourceCodePro git fzf gitg meld pandoc vscode-csharp vscode-csharpextensions vscode-icons pencil
@@ -26,3 +26,5 @@ choco install -y --cache-location=%localCachePath% mysql.workbench  sql-server-e
 @echo     %%ProgramData%%\chocolatey\config\chocolatey.config
 @echo     to %localCachePath%
 @echo ==================================================================
+
+@echo outlook: http://www.xequte.com/download/textlightningsetup.exe

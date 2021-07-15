@@ -17,7 +17,7 @@ choco install -y --cache-location=%localCachePath% gimp nextcloud-client libreof
 :: adobedigitaleditions adobereader
 
 :: Default IT applications
-choco install -y --cache-location=%localCachePath% SourceCodePro git fzf gitg lazygit meld pandoc vscode-csharp vscode-csharpextensions vscode-icons pencil
+choco install -y --cache-location=%localCachePath% SourceCodePro git fzf gitg meld pandoc vscode-csharp vscode-csharpextensions vscode-icons pencil
 
 :: Default development applications
 choco install -y --cache-location=%localCachePath% archi dotnetcore dotnetcore-sdk wixtoolset visualstudio2019community visualstudio2019-workload-netweb visualstudio2019-workload-universal visualstudio2019-workload-netcoretools visualstudio2019-workload-manageddesktop
