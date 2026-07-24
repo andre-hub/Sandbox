@@ -1,0 +1,12 @@
+# Home/Gaming ohne NVIDIA-Treiber
+Valve.Steam
+EpicGames.EpicGamesLauncher
+Blizzard.BattleNet
+ElectronicArts.EADesktop
+Ubisoft.Connect
+GOG.Galaxy
+Mojang.MinecraftLauncher
+OpenTTD.OpenTTD
+Discord.Discord
+Mumble.Mumble.Client
+TeamSpeakSystems.TeamSpeakClient

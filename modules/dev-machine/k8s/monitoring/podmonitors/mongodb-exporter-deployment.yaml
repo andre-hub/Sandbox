@@ -1,0 +1,64 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-exporter
+  namespace: dev-infra
+  labels:
+    app: mongodb-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb-exporter
+  template:
+    metadata:
+      labels:
+        app: mongodb-exporter
+    spec:
+      containers:
+        - name: mongodb-exporter
+          image: percona/mongodb_exporter:0.40
+          env:
+            # Read credentials from existing mongodb-secret (keys set by official mongo image)
+            - name: MONGODB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: MONGO_INITDB_ROOT_USERNAME
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: MONGO_INITDB_ROOT_PASSWORD
+            # Kubernetes $(VAR) substitution assembles the URI at pod start
+            - name: MONGODB_URI
+              value: "mongodb://$(MONGODB_USERNAME):$(MONGODB_PASSWORD)@mongodb-service.dev-infra.svc.cluster.local:27017/admin?authSource=admin"
+          ports:
+            - name: metrics
+              containerPort: 9216
+              protocol: TCP
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "100m"
+              memory: "128Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-exporter-service
+  namespace: dev-infra
+  labels:
+    app: mongodb-exporter
+spec:
+  selector:
+    app: mongodb-exporter
+  ports:
+    - name: metrics
+      protocol: TCP
+      port: 9216
+      targetPort: 9216
+  type: ClusterIP

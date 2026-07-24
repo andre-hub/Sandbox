@@ -1,0 +1,15 @@
+# Gemeinsame Windows-11-Basis
+7zip.7zip
+Microsoft.WindowsTerminal
+Microsoft.PowerToys
+aria2.aria2
+KeePassXCTeam.KeePassXC
+BleachBit.BleachBit
+WinDirStat.WinDirStat
+Microsoft.Sysinternals.Suite
+Git.Git
+Meld.Meld
+SublimeHQ.SublimeMerge
+junegunn.fzf
+chrisant996.Clink
+OpenJS.NodeJS.LTS

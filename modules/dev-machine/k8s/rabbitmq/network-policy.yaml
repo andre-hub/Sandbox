@@ -1,0 +1,45 @@
+# NetworkPolicy for RabbitMQ (dev-infra namespace)
+# Controls which pods are allowed to connect to RabbitMQ.
+# NOTE: Standard Minikube (kindnet CNI) does NOT enforce NetworkPolicies.
+#       Requires Calico or Cilium CNI to take effect.
+#
+# Allowed ingress:
+#   - AMQP port 5672:  any pod in dev-infra (local development workloads)
+#   - Metrics port 15692: Prometheus (monitoring namespace, ServiceMonitor)
+#   - Management UI port 15672: any pod in dev-infra (dev debugging)
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: rabbitmq-network-policy
+  namespace: dev-infra
+spec:
+  podSelector:
+    matchLabels:
+      app: rabbitmq
+  policyTypes:
+    - Ingress
+  ingress:
+    # AMQP (port 5672) – allowed from pods in dev-infra
+    - from:
+        - podSelector: {}
+      ports:
+        - port: 5672
+          protocol: TCP
+    # Prometheus metrics scraping (ServiceMonitor via port 15692)
+    # AND-semantics: namespaceSelector + podSelector in same list item
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: prometheus
+      ports:
+        - port: 15692
+          protocol: TCP
+    # Management UI (port 15672) – restricted to dev-infra namespace for local dev access
+    - from:
+        - podSelector: {}
+      ports:
+        - port: 15672
+          protocol: TCP

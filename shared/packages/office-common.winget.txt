@@ -1,0 +1,6 @@
+# Office/Common fuer Home und Company
+TheDocumentFoundation.LibreOffice
+SumatraPDF.SumatraPDF
+Nextcloud.NextcloudDesktop
+Greenshot.Greenshot
+VideoLAN.VLC

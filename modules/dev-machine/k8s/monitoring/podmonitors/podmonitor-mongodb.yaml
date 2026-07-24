@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: mongodb-exporter-monitor
+  namespace: dev-infra
+  labels:
+    release: kube-prometheus-stack
+    app: mongodb-exporter
+spec:
+  jobLabel: app
+  selector:
+    matchLabels:
+      app: mongodb-exporter
+  podMetricsEndpoints:
+    - port: metrics           # named port "metrics" (9216) defined in mongodb-exporter-deployment.yaml
+      path: /metrics
+      interval: 30s

@@ -1,0 +1,36 @@
+# NetworkPolicy for MongoDB (dev-infra namespace)
+# Controls which pods are allowed to connect to MongoDB on port 27017.
+# NOTE: Standard Minikube (kindnet CNI) does NOT enforce NetworkPolicies.
+#       Requires Calico or Cilium CNI to take effect.
+#
+# Allowed ingress on port 27017:
+#   - mongodb-exporter   (Prometheus exporter, MONGODB_URI)
+#   - mongo-express      (dev UI for local debugging)
+#   - any pod in dev-infra (local development workloads)
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mongodb-network-policy
+  namespace: dev-infra
+spec:
+  podSelector:
+    matchLabels:
+      app: mongodb
+  policyTypes:
+    - Ingress
+  ingress:
+    # MongoDB wire protocol (port 27017) – allowed from pods in dev-infra
+    - from:
+        # mongodb-exporter (Prometheus metrics collection)
+        - podSelector:
+            matchLabels:
+              app: mongodb-exporter
+        # mongo-express (dev UI – local development only)
+        - podSelector:
+            matchLabels:
+              app: mongo-express
+        # local development workloads in the same namespace
+        - podSelector: {}
+      ports:
+        - port: 27017
+          protocol: TCP

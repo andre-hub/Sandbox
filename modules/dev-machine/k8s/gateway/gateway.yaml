@@ -1,0 +1,25 @@
+---
+# GatewayClass: defines Envoy Gateway as the controller
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: envoy-gateway
+spec:
+  controllerName: gateway.envoyproxy.io/gatewayclass-controller
+
+---
+# Gateway: central entry point in the dev-infra namespace
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: dev-gateway
+  namespace: dev-infra
+spec:
+  gatewayClassName: envoy-gateway
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All

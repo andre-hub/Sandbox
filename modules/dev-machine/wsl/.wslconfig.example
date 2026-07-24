@@ -1,0 +1,14 @@
+# Place this file at %USERPROFILE%\.wslconfig
+# setup-admin.bat copies it there if no .wslconfig exists yet.
+
+[wsl2]
+# mirrored: WSL shares the host's network namespace (Win11 22H2+).
+# Required so localhost forwards from the distro reach Windows tooling.
+networkingMode=mirrored
+
+# Hard caps for the WSL 2 lightweight VM. Adjust to your machine.
+memory=8GB
+processors=4
+
+# Optional: raise if Minikube complains about virtual disk size.
+# swap=4GB

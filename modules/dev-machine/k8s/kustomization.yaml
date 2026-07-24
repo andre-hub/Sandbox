@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Generic local dev infrastructure stack (company-independent).
+# Only MongoDB, RabbitMQ, Mongo Express, the Envoy Gateway and the
+# Prometheus/Grafana monitoring resources are included here.
+resources:
+  - namespace.yaml
+  - mongodb/deployment.yaml
+  - mongodb/service.yaml
+  - mongodb/network-policy.yaml
+  - rabbitmq/configmap-plugins.yaml
+  - rabbitmq/deployment.yaml
+  - rabbitmq/service.yaml
+  - rabbitmq/network-policy.yaml
+  - mongo-express/deployment.yaml
+  - mongo-express/service.yaml
+  - gateway/gateway.yaml
+  - gateway/httproutes.yaml
+  - gateway/monitoring-httproutes.yaml
+  - monitoring

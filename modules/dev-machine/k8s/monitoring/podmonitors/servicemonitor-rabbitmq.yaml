@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: rabbitmq-monitor
+  namespace: dev-infra
+  labels:
+    app: rabbitmq
+spec:
+  # Selects rabbitmq-service (label app: rabbitmq confirmed in service.yaml)
+  selector:
+    matchLabels:
+      app: rabbitmq
+  endpoints:
+    - port: prometheus        # named port "prometheus" (15692) confirmed in service.yaml
+      path: /metrics
+      interval: 30s

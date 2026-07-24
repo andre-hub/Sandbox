@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>alter table add column</Title>
+            <Shortcut>AlterTableAddColumn</Shortcut>
+            <Description>alter table add column</Description>
+            <Author>ag</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>TableName</ID>
+                    <ToolTip>Table name</ToolTip>
+                    <Default>NewTablename</Default>
+                </Literal>
+                <Literal>
+                    <ID>Column</ID>
+                    <ToolTip>Column name</ToolTip>
+                    <Default>column</Default>
+                </Literal>
+                <Literal>
+                    <ID>ColumnType</ID>
+                    <ToolTip>ColumnType</ToolTip>
+                    <Default>varchar(255)</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="SQL">
+                <![CDATA[ALTER TABLE dbo.$TableName$ ADD $Column$ $ColumnType$ NOT NULL DEFAULT($end$)]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

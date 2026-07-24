@@ -1,0 +1,8 @@
+*.backup-*
+*.log
+*.tmp
+*.tmp-*
+Thumbs.db
+desktop.ini
+/config.ini
+config.local.ini

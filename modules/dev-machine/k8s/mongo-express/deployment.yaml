@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-express
+  namespace: dev-infra
+  labels:
+    app: mongo-express
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-express
+  template:
+    metadata:
+      labels:
+        app: mongo-express
+    spec:
+      containers:
+        - name: mongo-express
+          image: mongo-express:1.0.2
+          ports:
+            - containerPort: 8081
+          env:
+            - name: ME_CONFIG_MONGODB_SERVER
+              value: "mongodb-service"
+            - name: ME_CONFIG_MONGODB_PORT
+              value: "27017"
+            - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: MONGO_INITDB_ROOT_USERNAME
+            - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: MONGO_INITDB_ROOT_PASSWORD
+            - name: ME_CONFIG_BASICAUTH_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: MONGO_INITDB_ROOT_USERNAME
+            - name: ME_CONFIG_BASICAUTH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: MONGO_INITDB_ROOT_PASSWORD
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"

@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Note: kube-prometheus-values.yaml is a Helm values file — not included here.
+resources:
+  - grafana-cr.yaml
+  - loki-datasource.yaml
+  - prometheus-datasource.yaml
+  - podmonitors

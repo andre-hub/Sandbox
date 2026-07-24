@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq
+  namespace: dev-infra
+  labels:
+    app: rabbitmq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+    spec:
+      containers:
+        - name: rabbitmq
+          image: rabbitmq:3-management
+          ports:
+            - containerPort: 5672
+            - containerPort: 15672
+            - containerPort: 15692
+          envFrom:
+            - secretRef:
+                name: rabbitmq-secret
+          volumeMounts:
+            - name: rabbitmq-storage
+              mountPath: /var/lib/rabbitmq
+            - name: plugins-config
+              mountPath: /etc/rabbitmq/enabled_plugins
+              subPath: enabled_plugins
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "500m"
+              memory: "1Gi"
+          readinessProbe:
+            exec:
+              command: ["rabbitmq-diagnostics", "-q", "check_running"]
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            failureThreshold: 18
+            timeoutSeconds: 10
+      volumes:
+        - name: rabbitmq-storage
+          emptyDir: {}
+        - name: plugins-config
+          configMap:
+            name: rabbitmq-plugins-config

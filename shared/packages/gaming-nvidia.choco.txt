@@ -1,0 +1,2 @@
+# Optional, Default Nein; Chocolatey-Fallback, Paket-ID vor Nutzung auf Zielsystem pruefen.
+nvidia-display-driver

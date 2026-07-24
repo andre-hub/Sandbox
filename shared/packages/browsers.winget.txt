@@ -1,0 +1,4 @@
+# Browser-Auswahl; setup fragt Mehrfachauswahl ab
+Mozilla.Firefox
+ImputNet.Helium
+Google.Chrome

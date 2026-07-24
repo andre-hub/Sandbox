@@ -1,0 +1,54 @@
+---
+# Grafana instance managed by Grafana Operator.
+# The operator creates a Deployment and a Service named "grafana-service"
+# in the same namespace (monitoring).
+# Admin credentials are injected from the "grafana-admin-secret" Secret
+# which is created by deploy-stack.sh.
+apiVersion: grafana.integreatly.org/v1beta1
+kind: Grafana
+metadata:
+  name: grafana
+  namespace: monitoring
+  labels:
+    # Required label so GrafanaDashboard CRDs (instanceSelector) can target this instance.
+    dashboards: grafana
+spec:
+  config:
+    log:
+      mode: console
+    auth:
+      disable_login_form: "false"
+    users:
+      allow_sign_up: "false"
+  deployment:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: grafana
+              env:
+                - name: GF_SECURITY_ADMIN_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: grafana-admin-secret
+                      key: admin-user
+                - name: GF_SECURITY_ADMIN_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: grafana-admin-secret
+                      key: admin-password
+              resources:
+                requests:
+                  cpu: 250m
+                  memory: 256Mi
+                limits:
+                  cpu: 500m
+                  memory: 512Mi
+  service:
+    spec:
+      type: ClusterIP
+      ports:
+        - name: grafana
+          port: 3000
+          targetPort: 3000
+          protocol: TCP

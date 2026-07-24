@@ -1,0 +1,3 @@
+# Chocolatey-Fallback fuer Pakete ohne aktuell verifiziertes winget-Manifest.
+# Stand 2026-06-27: RustDesk ist in microsoft/winget-pkgs nicht vorhanden; Chocolatey-Paket vorhanden.
+rustdesk

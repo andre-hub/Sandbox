@@ -1,0 +1,62 @@
+---
+# HTTPRoute: RabbitMQ Management UI
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: rabbitmq-route
+  namespace: dev-infra
+spec:
+  parentRefs:
+    - name: dev-gateway
+  hostnames:
+    - "rabbitmq.local"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: rabbitmq-service
+          port: 15672
+
+---
+# HTTPRoute: MongoDB (via Mongo Express UI)
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: mongodb-route
+  namespace: dev-infra
+spec:
+  parentRefs:
+    - name: dev-gateway
+  hostnames:
+    - "mongodb.local"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: mongo-express-service
+          port: 8081
+
+---
+# HTTPRoute: Mongo Express (separate hostname)
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: mongo-express-route
+  namespace: dev-infra
+spec:
+  parentRefs:
+    - name: dev-gateway
+  hostnames:
+    - "mongo-express.local"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: mongo-express-service
+          port: 8081

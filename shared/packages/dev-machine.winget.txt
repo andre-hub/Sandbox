@@ -1,0 +1,9 @@
+# Home/Dev-Maschine: Entwicklungswerkzeuge; WSL-Skripte liegen in modules/dev-machine
+GitExtensionsTeam.GitExtensions
+uutils.coreutils
+JohnMacFarlane.Pandoc
+Rustlang.mdBook
+Rustlang.Rustup
+GoLang.Go
+Python.Python.3.13
+Microsoft.VisualStudioCode

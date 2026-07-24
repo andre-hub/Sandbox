@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>method</Title>
+            <Shortcut>method</Shortcut>
+            <Description>add method</Description>
+            <Author>ag</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+                <SnippetType>SurroundsWith</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>access_modifier</ID>
+                    <Default>private</Default>
+                </Literal>
+                <Literal>
+                    <ID>return_type</ID>
+                    <Default>void</Default>
+                </Literal>
+                <Literal>
+                    <ID>name</ID>
+                    <Default>NewMethod</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+            <![CDATA[$access_modifier$ $return_type$ $name$ ()
+    {
+    $end$
+    }]]></Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

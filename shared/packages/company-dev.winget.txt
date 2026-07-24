@@ -1,0 +1,5 @@
+# Company-Dev-Ergaenzung; Default Ja im Company-Setup
+Microsoft.SQLServerManagementStudio
+Oracle.MySQLWorkbench
+MongoDB.Compass.Full
+JGraph.Draw

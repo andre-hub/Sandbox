@@ -1,0 +1,2 @@
+# Optionaler AI-Workflow; Company Default Nein/Firmenfreigabe beachten
+Ollama.Ollama

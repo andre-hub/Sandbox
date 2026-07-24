@@ -1,0 +1,52 @@
+# kube-prometheus-stack Helm values for local dev (Minikube)
+# Grafana is managed separately via Grafana Operator -> disabled here.
+
+grafana:
+  enabled: false
+
+prometheus:
+  prometheusSpec:
+    # Accept PodMonitors and ServiceMonitors from ALL namespaces (incl. dev-infra).
+    # Empty selector = match everything.
+    podMonitorNamespaceSelector: {}
+    podMonitorSelector: {}
+    serviceMonitorNamespaceSelector: {}
+    serviceMonitorSelector: {}
+    ruleNamespaceSelector: {}
+
+    # Reduce resource usage for local dev
+    retention: 7d
+    resources:
+      requests:
+        cpu: 250m
+        memory: 512Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+
+alertmanager:
+  alertmanagerSpec:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
+
+# Reduce node-exporter / kube-state-metrics footprint on minikube
+nodeExporter:
+  enabled: true
+
+kubeStateMetrics:
+  enabled: true
+
+# Disable components that need cluster-level access not available on minikube
+kubeEtcd:
+  enabled: false
+kubeControllerManager:
+  enabled: false
+kubeScheduler:
+  enabled: false
+kubeProxy:
+  enabled: false

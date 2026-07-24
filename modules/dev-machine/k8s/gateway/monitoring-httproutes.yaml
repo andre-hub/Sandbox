@@ -1,0 +1,87 @@
+---
+# HTTPRoute: Grafana
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: grafana-route
+  namespace: monitoring
+spec:
+  parentRefs:
+    - name: dev-gateway
+      namespace: dev-infra
+  hostnames:
+    - "grafana.local"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: grafana-service
+          port: 3000
+
+---
+# HTTPRoute: Prometheus
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: prometheus-route
+  namespace: monitoring
+spec:
+  parentRefs:
+    - name: dev-gateway
+      namespace: dev-infra
+  hostnames:
+    - "prometheus.local"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: prometheus-operated
+          port: 9090
+
+---
+# HTTPRoute: Loki
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: loki-route
+  namespace: monitoring
+spec:
+  parentRefs:
+    - name: dev-gateway
+      namespace: dev-infra
+  hostnames:
+    - "loki.local"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: loki
+          port: 3100
+
+---
+# HTTPRoute: Alertmanager
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: alertmanager-route
+  namespace: monitoring
+spec:
+  parentRefs:
+    - name: dev-gateway
+      namespace: dev-infra
+  hostnames:
+    - "alertmanager.local"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: alertmanager-operated
+          port: 9093
